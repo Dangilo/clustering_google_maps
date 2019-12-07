@@ -28,14 +28,23 @@ dev_dependencies:
 flutter:
 
   # To add assets to your package, add an assets section, like this:
-    assets:
-      - assets/images/m1.png
-      - assets/images/m2.png
-      - assets/images/m3.png
-      - assets/images/m4.png
-      - assets/images/m5.png
-      - assets/images/m6.png
-      - assets/images/m7.png
+  assets:
+    - assets/images/m1.png
+    - assets/images/m2.png
+    - assets/images/m3.png
+    - assets/images/m4.png
+    - assets/images/m5.png
+    - assets/images/m6.png
+    - assets/images/m7.png
+    - assets/images/m1.png
+    - assets/images/m1.bmp
+    - assets/images/m2.bmp
+    - assets/images/m3.bmp
+    - assets/images/m4.bmp
+    - assets/images/m5.bmp
+    - assets/images/m6.bmp
+    - assets/images/m7.bmp
+
   # For details regarding assets in packages, see
   # https://flutter.io/assets-and-images/#from-packages
   #

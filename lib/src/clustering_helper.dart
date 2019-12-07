@@ -1,6 +1,7 @@
-import 'dart:typed_data';
 import 'dart:async';
+import 'dart:typed_data';
 import 'dart:ui' as ui;
+
 import 'package:clustering_google_maps/src/aggregated_points.dart';
 import 'package:clustering_google_maps/src/aggregation_setup.dart';
 import 'package:clustering_google_maps/src/db_helper.dart';
@@ -225,7 +226,7 @@ class ClusteringHelper {
       return true;
     }());
 
-    final Set<Marker> markers = {};
+    final Set<Marker> markers = Set();
 
     for (var i = 0; i < aggregation.length; i++) {
       final a = aggregation[i];
@@ -238,8 +239,8 @@ class ClusteringHelper {
 
       if (a.count == 1) {
         if (bitmapAssetPathForSingleMarker != null) {
-          bitmapDescriptor =
-              BitmapDescriptor.fromAsset(bitmapAssetPathForSingleMarker);
+          bitmapDescriptor = await BitmapDescriptor.fromAssetImage(
+              ImageConfiguration(), bitmapAssetPathForSingleMarker);
         } else {
           bitmapDescriptor = BitmapDescriptor.defaultMarker;
         }
@@ -291,7 +292,8 @@ class ClusteringHelper {
               title:
                   "${p.location.latitude.toStringAsFixed(2)},${p.location.longitude.toStringAsFixed(2)}"),
           icon: bitmapAssetPathForSingleMarker != null
-              ? BitmapDescriptor.fromAsset(bitmapAssetPathForSingleMarker)
+              ? BitmapDescriptor.fromAssetImage(
+                  ImageConfiguration(), bitmapAssetPathForSingleMarker)
               : BitmapDescriptor.defaultMarker,
         );
       }).toSet();
