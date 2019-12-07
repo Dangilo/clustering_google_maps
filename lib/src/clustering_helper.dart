@@ -332,7 +332,7 @@ class ClusteringHelper {
     );
 
     final img = await pictureRecorder.endRecording().toImage(size, size);
-    final data = await img.toByteData(format: ui.ImageByteFormat.png);
+    final data = await img.toByteData(format: ui.ImageByteFormat.rawRgba);
     return data.buffer.asUint8List();
   }
 
