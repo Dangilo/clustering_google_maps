@@ -283,6 +283,10 @@ class ClusteringHelper {
         listOfPoints = list;
       }
 
+      //load custom marker
+      BitmapDescriptor singleMarker = await BitmapDescriptor.fromAssetImage(
+          ImageConfiguration(), bitmapAssetPathForSingleMarker);
+
       final Set<Marker> markers = listOfPoints.map((p) {
         final MarkerId markerId = MarkerId(p.getId());
         return Marker(
@@ -292,8 +296,7 @@ class ClusteringHelper {
               title:
                   "${p.location.latitude.toStringAsFixed(2)},${p.location.longitude.toStringAsFixed(2)}"),
           icon: bitmapAssetPathForSingleMarker != null
-              ? BitmapDescriptor.fromAssetImage(
-                  ImageConfiguration(), bitmapAssetPathForSingleMarker)
+              ? singleMarker
               : BitmapDescriptor.defaultMarker,
         );
       }).toSet();
