@@ -45,6 +45,7 @@ flutter:
     - assets/images/m5.bmp
     - assets/images/m6.bmp
     - assets/images/m7.bmp
+    - assets/images/circle.bmp
 
   # For details regarding assets in packages, see
   # https://flutter.io/assets-and-images/#from-packages

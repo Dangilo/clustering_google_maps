@@ -246,20 +246,11 @@ class ClusteringHelper {
         }
       } else {
         // >1
-        final Uint8List imageBytes =
+        /* final Uint8List markerIcon =
             await getBytesFromCanvas(a.count.toString(), getColor(a.count));
-
-        final ui.Codec markerImageCodec = await ui.instantiateImageCodec(
-          imageBytes,
-          targetWidth: 24,
-        );
-        final ui.FrameInfo frameInfo = await markerImageCodec.getNextFrame();
-        final ByteData byteData = await frameInfo.image.toByteData(
-          format: ui.ImageByteFormat.png,
-        );
-        final Uint8List resizedMarkerImageBytes = byteData.buffer.asUint8List();
-
-        bitmapDescriptor = BitmapDescriptor.fromBytes(resizedMarkerImageBytes);
+        bitmapDescriptor = BitmapDescriptor.fromBytes(markerIcon);*/
+        bitmapDescriptor = await BitmapDescriptor.fromAssetImage(
+            ImageConfiguration(), 'assets/images/circle.bmp');
       }
       final MarkerId markerId = MarkerId(a.getId());
 
