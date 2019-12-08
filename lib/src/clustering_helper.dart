@@ -246,9 +246,20 @@ class ClusteringHelper {
         }
       } else {
         // >1
-        final Uint8List markerIcon =
+        final Uint8List imageBytes =
             await getBytesFromCanvas(a.count.toString(), getColor(a.count));
-        bitmapDescriptor = BitmapDescriptor.fromBytes(markerIcon);
+
+        final ui.Codec markerImageCodec = await ui.instantiateImageCodec(
+          imageBytes,
+          targetWidth: 24,
+        );
+        final ui.FrameInfo frameInfo = await markerImageCodec.getNextFrame();
+        final ByteData byteData = await frameInfo.image.toByteData(
+          format: ui.ImageByteFormat.png,
+        );
+        final Uint8List resizedMarkerImageBytes = byteData.buffer.asUint8List();
+
+        bitmapDescriptor = BitmapDescriptor.fromBytes(resizedMarkerImageBytes);
       }
       final MarkerId markerId = MarkerId(a.getId());
 
@@ -332,7 +343,7 @@ class ClusteringHelper {
     );
 
     final img = await pictureRecorder.endRecording().toImage(size, size);
-    final data = await img.toByteData(format: ui.ImageByteFormat.rawRgba);
+    final data = await img.toByteData(format: ui.ImageByteFormat.png);
     return data.buffer.asUint8List();
   }
 
